@@ -1,9 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-
-interface Personaje {
-  nombre: string;
-  poder: number;
-}
+import { Component, OnInit, EventEmitter } from '@angular/core';
+import { Personajes } from '../interfaces/personajes.interface';
 
 @Component({
   selector: 'app-main-page',
@@ -17,7 +13,7 @@ export class MainPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  personajes: Personaje[] = [
+  personajes: Personajes [] = [
     {
       nombre: "Gokú",
       poder: 15000
@@ -32,19 +28,12 @@ export class MainPageComponent implements OnInit {
     }
   ]
 
-  nuevo: Personaje = {
-    nombre: " ",
+  nuevo: Personajes = {
+    nombre: "",
     poder: 0
   }
 
-  public agregar() {
-    if (this.nuevo.nombre.trim().length === 0) {
-      return;
-    }
-    this.personajes.push(this.nuevo)
-    this.nuevo = {
-      nombre: "",
-      poder: 0
-    }
+  agregarNuevo(nuevo: Personajes){
+    this.personajes.push(nuevo);
   }
 }
